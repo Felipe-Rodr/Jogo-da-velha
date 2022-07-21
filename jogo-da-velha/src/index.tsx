@@ -2,20 +2,16 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import './index.css';
+import {ControlarClick, CriarQuadrados, TrocarJogador} from './logica';
 
 const {useState} = React;
 
 const Quadrado = (VezJogador:string) => {
   const [QuadradoValor, setQuadradoValor] = useState('');
-  const ControlarClick = () => {
-    if(QuadradoValor === ''){
-      setQuadradoValor(VezJogador);
-    } else {
-      alert('Quadrado preenchido');
-    }
-  }
   return(
-      <button className='quadrado' onClick={ControlarClick}>
+      <button className='quadrado' onClick={() =>{
+        ControlarClick(QuadradoValor,setQuadradoValor,VezJogador);
+      }}>
         {QuadradoValor}
       </button>
   );
@@ -23,38 +19,28 @@ const Quadrado = (VezJogador:string) => {
 
 const Tabuleiro = () => {
   const [VezJogador, setVezJogador] = useState('X');
-  const CriarQuadrados = () => {
-    const Quadrados = [];
-    for(let i=0; i<9; i++){
-      Quadrados.push(Quadrado(VezJogador));
-    }
-    return Quadrados;
-  }
-  const Quadrados = CriarQuadrados();
-  const TrocarJogador = () => {
-    if(VezJogador === 'X'){
-      setVezJogador('O');
-    } else if (VezJogador === 'O'){
-      setVezJogador('X');
-    } else if(VezJogador === ''){
-      setVezJogador('X');
-    }
-  }
+  const Quadrados = CriarQuadrados(VezJogador,Quadrado);
   return(
     <><div className='VezJogador'>
       Proximo jogador: {VezJogador}
     </div>
-    <div className='linha-tabuleiro' onClick={TrocarJogador}>
+    <div className='linha-tabuleiro' onClick={() => {
+      TrocarJogador(VezJogador,setVezJogador);
+    }}>
       {Quadrados[0]}
       {Quadrados[1]}
       {Quadrados[2]}
     </div>
-    <div className='linha-tabuleiro' onClick={TrocarJogador}>
+    <div className='linha-tabuleiro' onClick={() => {
+      TrocarJogador(VezJogador,setVezJogador);
+    }}>
       {Quadrados[3]}
       {Quadrados[4]}
       {Quadrados[5]}
     </div>
-    <div className='linha-tabuleiro' onClick={TrocarJogador}>
+    <div className='linha-tabuleiro' onClick={() => {
+      TrocarJogador(VezJogador,setVezJogador);
+    }}>
       {Quadrados[6]}
       {Quadrados[7]}
       {Quadrados[8]}
