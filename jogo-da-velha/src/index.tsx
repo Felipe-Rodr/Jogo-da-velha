@@ -7,10 +7,15 @@ const {useState} = React;
 
 const Quadrado = (VezJogador:string) => {
   const [QuadradoValor, setQuadradoValor] = useState('');
+  const ControlarClick = () => {
+    if(QuadradoValor === ''){
+      setQuadradoValor(VezJogador);
+    } else {
+      alert('Quadrado preenchido');
+    }
+  }
   return(
-      <button className='quadrado' onClick={ () => {
-        setQuadradoValor(VezJogador);
-      }}>
+      <button className='quadrado' onClick={ControlarClick}>
         {QuadradoValor}
       </button>
   );
@@ -18,10 +23,20 @@ const Quadrado = (VezJogador:string) => {
 
 const Tabuleiro = () => {
   const [VezJogador, setVezJogador] = useState('X');
+  const CriarQuadrados = () => {
+    const Quadrados = [];
+    for(let i=0; i<9; i++){
+      Quadrados.push(Quadrado(VezJogador));
+    }
+    return Quadrados;
+  }
+  const Quadrados = CriarQuadrados();
   const TrocarJogador = () => {
     if(VezJogador === 'X'){
       setVezJogador('O');
     } else if (VezJogador === 'O'){
+      setVezJogador('X');
+    } else if(VezJogador === ''){
       setVezJogador('X');
     }
   }
@@ -30,25 +45,36 @@ const Tabuleiro = () => {
       Proximo jogador: {VezJogador}
     </div>
     <div className='linha-tabuleiro' onClick={TrocarJogador}>
-      {Quadrado(VezJogador)}
-      {Quadrado(VezJogador)}
-      {Quadrado(VezJogador)}
+      {Quadrados[0]}
+      {Quadrados[1]}
+      {Quadrados[2]}
     </div>
     <div className='linha-tabuleiro' onClick={TrocarJogador}>
-      {Quadrado(VezJogador)}
-      {Quadrado(VezJogador)}
-      {Quadrado(VezJogador)}
+      {Quadrados[3]}
+      {Quadrados[4]}
+      {Quadrados[5]}
     </div>
     <div className='linha-tabuleiro' onClick={TrocarJogador}>
-      {Quadrado(VezJogador)}
-      {Quadrado(VezJogador)}
-      {Quadrado(VezJogador)}
+      {Quadrados[6]}
+      {Quadrados[7]}
+      {Quadrados[8]}
     </div></>
   );
 }
 
+const App = () => {
+  return(
+    <div className='body'>
+      <h2>Jogo da velha:</h2>
+      <div>
+        {Tabuleiro()}
+      </div>
+    </div>
+  )
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Tabuleiro/>);
+root.render(<App/>);
 
 
 /*class Quadrado extends React.Component<any, any>{
