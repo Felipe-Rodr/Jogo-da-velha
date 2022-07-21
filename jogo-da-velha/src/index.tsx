@@ -18,21 +18,28 @@ const Quadrado = (VezJogador:string) => {
 
 const Tabuleiro = () => {
   const [VezJogador, setVezJogador] = useState('X');
+  const TrocarJogador = () => {
+    if(VezJogador === 'X'){
+      setVezJogador('O');
+    } else if (VezJogador === 'O'){
+      setVezJogador('X');
+    }
+  }
   return(
     <><div className='VezJogador'>
       Proximo jogador: {VezJogador}
     </div>
-    <div className='linha-tabuleiro'>
+    <div className='linha-tabuleiro' onClick={TrocarJogador}>
       {Quadrado(VezJogador)}
       {Quadrado(VezJogador)}
       {Quadrado(VezJogador)}
     </div>
-    <div className='linha-tabuleiro'>
+    <div className='linha-tabuleiro' onClick={TrocarJogador}>
       {Quadrado(VezJogador)}
       {Quadrado(VezJogador)}
       {Quadrado(VezJogador)}
     </div>
-    <div className='linha-tabuleiro'>
+    <div className='linha-tabuleiro' onClick={TrocarJogador}>
       {Quadrado(VezJogador)}
       {Quadrado(VezJogador)}
       {Quadrado(VezJogador)}
