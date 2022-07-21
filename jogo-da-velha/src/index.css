@@ -26,13 +26,13 @@ ol, ul {
   display: table;
 }
 
-.ProxJogador {
+.VezJogador {
   margin-bottom: 10px;
 }
 
-.quadrado {
+.quadrado{
   background: #fff;
-  border: 1px solid #999;
+  border: 1.5px solid #999;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -45,15 +45,15 @@ ol, ul {
   width: 34px;
 }
 
-.square:focus {
+.quadrado:focus {
   outline: none;
 }
 
-.kbd-navigation .square:focus {
+.kbd-navigation .quadrado:focus {
   background: #ddd;
 }
 
-.game {
+.jogo {
   display: flex;
   flex-direction: row;
 }

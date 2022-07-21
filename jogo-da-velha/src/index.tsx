@@ -1,25 +1,60 @@
+import { render } from '@testing-library/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import './index.css';
 
-class Quadrado extends React.Component<any, any>{
-  constructor(props: {}){
-    super(props);
-    this.state = {
-      value: '',
-    };
-  }
+const {useState} = React;
 
-  render() {
-    return (
-      <button className="quadrado" onClick={() => {
-        this.setState({value: 'X'});
+const Quadrado = (VezJogador:string) => {
+  const [QuadradoValor, setQuadradoValor] = useState('');
+  return(
+      <button className='quadrado' onClick={ () => {
+        setQuadradoValor(VezJogador);
       }}>
-        {this.state.value}
+        {QuadradoValor}
       </button>
-    );
-  }
+  );
 }
+
+const Tabuleiro = () => {
+  const [VezJogador, setVezJogador] = useState('X');
+  return(
+    <><div className='VezJogador'>
+      Proximo jogador: {VezJogador}
+    </div>
+    <div className='linha-tabuleiro'>
+      {Quadrado(VezJogador)}
+      {Quadrado(VezJogador)}
+      {Quadrado(VezJogador)}
+    </div>
+    <div className='linha-tabuleiro'>
+      {Quadrado(VezJogador)}
+      {Quadrado(VezJogador)}
+      {Quadrado(VezJogador)}
+    </div>
+    <div className='linha-tabuleiro'>
+      {Quadrado(VezJogador)}
+      {Quadrado(VezJogador)}
+      {Quadrado(VezJogador)}
+    </div></>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Tabuleiro/>);
+
+
+/*class Quadrado extends React.Component<any, any>{
+    render() {
+      return (
+        <button className="quadrado" 
+          onClick={() => {this.props.onClick();} 
+          }>
+          {this.props.value}
+        </button>
+      );
+    }
+  }
 
 class Tabuleiro extends React.Component<any, any> {
   constructor(props: {}){
@@ -28,9 +63,17 @@ class Tabuleiro extends React.Component<any, any> {
       quadrados: Array(9).fill(null),
     };
   }
+
+  ControlarClick(i:any){
+    const quadrados = this.state.quadrados.slice();
+    quadrados[i] = 'X';
+    this.setState({quadrados: quadrados});
+  }
   
   renderQuadrado(i:number) {
-    return <Quadrado value={this.state.quadrados[i]} />;
+    return (<Quadrado value={this.state.quadrados[i]}
+      onClick={() =>this.ControlarClick(i)} />
+    );
   }
 
   render() {
@@ -67,16 +110,15 @@ class Game extends React.Component {
           <Tabuleiro />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <div>{}</div>
+          <ol>{/}</ol>
         </div>
       </div>
     );
   }
 }
 
-// ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
-
+*/
