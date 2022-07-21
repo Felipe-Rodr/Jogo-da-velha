@@ -24,4 +24,24 @@ export const TrocarJogador = (VezJogador:string, setVezJogador: React.Dispatch<R
     } else if(VezJogador === ''){
       setVezJogador('X');
     }
-} 
+}
+
+export const ChecarVitoria = (Quadrados: JSX.Element[], VezJogador:string) => {
+    if((Quadrados[0].props.QuadradoValor === 'X' && Quadrados[1].props.QuadradoValor === 'X' && Quadrados[2].props.QuadradoValor === 'X') || (Quadrados[0].props.QuadradoValor === 'O' && Quadrados[1].props.QuadradoValor === 'O' && Quadrados[2].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    } else if((Quadrados[3].props.QuadradoValor === 'X' && Quadrados[4].props.QuadradoValor === 'X' && Quadrados[5].props.QuadradoValor === 'X') || (Quadrados[3].props.QuadradoValor === 'O' && Quadrados[4].props.QuadradoValor === 'O' && Quadrados[5].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    } else if((Quadrados[6].props.QuadradoValor === 'X' && Quadrados[7].props.QuadradoValor === 'X' && Quadrados[8].props.QuadradoValor === 'X') || (Quadrados[6].props.QuadradoValor === 'O' && Quadrados[7].props.QuadradoValor === 'O' && Quadrados[8].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    } else if((Quadrados[0].props.QuadradoValor === 'X' && Quadrados[3].props.QuadradoValor === 'X' && Quadrados[6].props.QuadradoValor === 'X') || (Quadrados[0].props.QuadradoValor === 'O' && Quadrados[3].props.QuadradoValor === 'O' && Quadrados[6].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    } else if((Quadrados[1].props.QuadradoValor === 'X' && Quadrados[4].props.QuadradoValor === 'X' && Quadrados[7].props.QuadradoValor === 'X') || (Quadrados[1].props.QuadradoValor === 'O' && Quadrados[4].props.QuadradoValor === 'O' && Quadrados[7].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    } else if((Quadrados[2].props.QuadradoValor === 'X' && Quadrados[5].props.QuadradoValor === 'X' && Quadrados[8].props.QuadradoValor === 'X') || (Quadrados[2].props.QuadradoValor === 'O' && Quadrados[5].props.QuadradoValor === 'O' && Quadrados[8].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    } else if((Quadrados[0].props.QuadradoValor === 'X' && Quadrados[4].props.QuadradoValor === 'X' && Quadrados[8].props.QuadradoValor === 'X') || (Quadrados[0].props.QuadradoValor === 'O' && Quadrados[4].props.QuadradoValor === 'O' && Quadrados[8].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    } else if((Quadrados[2].props.QuadradoValor === 'X' && Quadrados[4].props.QuadradoValor === 'X' && Quadrados[6].props.QuadradoValor === 'X') || (Quadrados[2].props.QuadradoValor === 'O' && Quadrados[4].props.QuadradoValor === 'O' && Quadrados[6].props.QuadradoValor === 'O')){
+        document.getElementById('ganhador').innerHTML = 'Ganhador: ' + VezJogador;
+    }
+}
