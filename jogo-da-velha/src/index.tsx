@@ -1,15 +1,14 @@
-import { render } from '@testing-library/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import './index.css';
-import {ControlarClick, CriarQuadrados, TrocarJogador, ChecarVitoria} from './logica';
+import {ControlarClick, ControlarTurno, CriarQuadrados} from './logica';
 
-const {useState} = React;
+const {useState,useEffect} = React;
 
 const Quadrado = (VezJogador:string) => {
   const [QuadradoValor, setQuadradoValor] = useState('');
   return(
-      <button className='quadrado' onClick={() =>{
+      <button className='quadrado' onClick={() => {
         ControlarClick(QuadradoValor,setQuadradoValor,VezJogador);
       }}>
         {QuadradoValor}
@@ -19,30 +18,28 @@ const Quadrado = (VezJogador:string) => {
 
 const Tabuleiro = () => {
   const [VezJogador, setVezJogador] = useState('X');
+  const [EstadoJogo, setEstadoJogo] = useState(0)
   const Quadrados = CriarQuadrados(VezJogador,Quadrado);
   return(
     <><div className='VezJogador'>
       Proximo jogador: {VezJogador}
     </div>
     <div className='linha-tabuleiro' onClick={() => {
-      ChecarVitoria(Quadrados,VezJogador);
-      TrocarJogador(VezJogador,setVezJogador);
+      ControlarTurno(Quadrados,VezJogador,setVezJogador);
     }}>
       {Quadrados[0]}
       {Quadrados[1]}
       {Quadrados[2]}
     </div>
     <div className='linha-tabuleiro' onClick={() => {
-      ChecarVitoria(Quadrados,VezJogador);
-      TrocarJogador(VezJogador,setVezJogador);
+      ControlarTurno(Quadrados,VezJogador,setVezJogador);
     }}>
       {Quadrados[3]}
       {Quadrados[4]}
       {Quadrados[5]}
     </div>
     <div className='linha-tabuleiro' onClick={() => {
-      ChecarVitoria(Quadrados,VezJogador);
-      TrocarJogador(VezJogador,setVezJogador);
+      ControlarTurno(Quadrados,VezJogador,setVezJogador);
     }}>
       {Quadrados[6]}
       {Quadrados[7]}
@@ -57,10 +54,11 @@ const App = () => {
       <h2>Jogo da velha:</h2>
       <div>
         {Tabuleiro()}
+        <p id='aviso'></p>
         <p id='ganhador'></p>
       </div>
     </div>
-  )
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
