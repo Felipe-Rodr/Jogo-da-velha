@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 import './index.css';
 import {ControlarClick, ControlarTurno, CriarQuadrados} from './logica';
 
-const {useState,useEffect} = React;
+const {useState} = React;
 
 const Quadrado = (VezJogador:string) => {
   const [QuadradoValor, setQuadradoValor] = useState('');
@@ -18,7 +18,6 @@ const Quadrado = (VezJogador:string) => {
 
 const Tabuleiro = () => {
   const [VezJogador, setVezJogador] = useState('X');
-  const [EstadoJogo, setEstadoJogo] = useState(0)
   const Quadrados = CriarQuadrados(VezJogador,Quadrado);
   return(
     <><div className='VezJogador'>
