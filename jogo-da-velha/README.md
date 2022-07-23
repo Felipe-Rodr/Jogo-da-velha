@@ -1,1 +1,1 @@
-Projeto em desenvolvimento, pois ainda estou apanhando para o React!
+Jogo da velha para browser desenvolvido utilizando React e Typescript.
