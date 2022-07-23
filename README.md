@@ -1,2 +1,2 @@
 # Jogo-da-velha
-Projeto de criação de um jogo da velha utilizando react.js e typescript.
+Jogo da velha para browser desenvolvido utilizando React e Typescript.
