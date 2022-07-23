@@ -74,7 +74,7 @@ const App = () => {
   return(
     <div className='body'>
       <h2>Jogo da velha:</h2>
-      <div>
+      <div className='tabuleiro'>
         {Tabuleiro(Button, setButton, Reiniciar)}
         <p id='aviso'></p>
         <p id='ganhador'></p>
