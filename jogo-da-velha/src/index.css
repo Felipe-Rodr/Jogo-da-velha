@@ -1,17 +1,17 @@
 body {
-  background-color:lightgrey;
+  background-color:rgb(32, 32, 32);
+  color: rgb(245, 240, 240);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: auto;
-  width: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: auto;
+  min-height: 100vh;
 }
 
 code {
@@ -37,9 +37,16 @@ ol, ul {
   margin-bottom: 10px;
 }
 
+.tabuleiro {
+  display: table;
+  vertical-align: middle;
+  margin: auto;
+}
+
 .quadrado{
-  background: #fff;
-  border: 1.5px solid #999;
+  background: rgb(32, 32, 32);
+  color: rgb(245, 240, 240);
+  border: 1.5px solid rgb(245, 240, 240);
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -49,6 +56,7 @@ ol, ul {
   margin-top: -1px;
   padding: 0;
   text-align: center;
+  
   width: 34px;
 }
 
@@ -58,6 +66,13 @@ ol, ul {
 
 .kbd-navigation .quadrado:focus {
   background: #ddd;
+}
+
+.reiniciar {
+  background: rgb(32, 32, 32);
+  color:  rgb(245, 240, 240);
+  border: 1.5px solid rgb(245, 240, 240);
+  border-radius: 4px;
 }
 
 .jogo {
