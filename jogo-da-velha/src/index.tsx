@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import './index.css';
-import {ChecarVitoria, ControlarClick, ControlarTurno, CriarQuadrados, ReiniciarJogo} from './logica';
+import {ChecarVitoria, ControlarClick, CriarQuadrados, ReiniciarJogo} from './logica';
 
 const {useState,useEffect} = React;
 
@@ -11,14 +11,14 @@ const EstadoInicial = {
   Button:true,
 }
 
-const Quadrado = (VezJogador:string, Button:boolean, Reiniciar:boolean) => {
+const Quadrado = (VezJogador:string, setVezJogador:React.Dispatch<React.SetStateAction<string>>, Button:boolean, Reiniciar:boolean) => {
   const [QuadradoValor, setQuadradoValor] = useState('');
   useEffect(() => {
     setQuadradoValor(EstadoInicial.QuadradoValor);
   },[Reiniciar])
   return(
       <button className='quadrado' onClick={() => {
-        ControlarClick(QuadradoValor,setQuadradoValor,VezJogador);
+        ControlarClick(QuadradoValor,setQuadradoValor,VezJogador,setVezJogador);
       }} disabled={!Button}>
         {QuadradoValor}
       </button>
@@ -27,7 +27,7 @@ const Quadrado = (VezJogador:string, Button:boolean, Reiniciar:boolean) => {
 
 const Tabuleiro = (Button:boolean, setButton:React.Dispatch<React.SetStateAction<boolean>>, Reiniciar:boolean) => {
   const [VezJogador, setVezJogador] = useState('X');
-  const Quadrados = CriarQuadrados(VezJogador, Button, Reiniciar, Quadrado);
+  const Quadrados = CriarQuadrados(VezJogador, setVezJogador, Button, Reiniciar, Quadrado);
   useEffect(() => {
     if(ChecarVitoria(Quadrados,VezJogador)){
       setButton(false);
@@ -44,23 +44,17 @@ const Tabuleiro = (Button:boolean, setButton:React.Dispatch<React.SetStateAction
     <><div className='VezJogador'>
       Proximo jogador: {VezJogador}
     </div>
-    <div className='linha-tabuleiro' onClick={() => {
-      ControlarTurno(Quadrados,VezJogador,setVezJogador);
-    }}>
+    <div className='linha-tabuleiro'>
       {Quadrados[0]}
       {Quadrados[1]}
       {Quadrados[2]}
     </div>
-    <div className='linha-tabuleiro' onClick={() => {
-      ControlarTurno(Quadrados,VezJogador,setVezJogador);
-    }}>
+    <div className='linha-tabuleiro'>
       {Quadrados[3]}
       {Quadrados[4]}
       {Quadrados[5]}
     </div>
-    <div className='linha-tabuleiro' onClick={() => {
-      ControlarTurno(Quadrados,VezJogador,setVezJogador);
-    }}>
+    <div className='linha-tabuleiro'>
       {Quadrados[6]}
       {Quadrados[7]}
       {Quadrados[8]}

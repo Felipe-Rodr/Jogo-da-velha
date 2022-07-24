@@ -1,17 +1,20 @@
-export const ControlarClick = (QuadradoValor:string, setQuadradoValor: React.Dispatch<React.SetStateAction<string>>, VezJogador:string) => {
+import React from "react";
+
+export const ControlarClick = (QuadradoValor:string, setQuadradoValor: React.Dispatch<React.SetStateAction<string>>, VezJogador:string, setVezJogador: React.Dispatch<React.SetStateAction<string>>) => {
   if(QuadradoValor === ''){
     document.getElementById('aviso').innerHTML = '';
     setQuadradoValor(VezJogador);
+    TrocarJogador(VezJogador,setVezJogador);
   } else {
     document.getElementById('aviso').innerHTML = 'Erro: Quadrado preenchido.'
   }
   return 
 }
 
-export const CriarQuadrados = (VezJogador:string, Button:boolean, Reiniciar:boolean, Quadrado: (VezJogador:string, Button:boolean, Reiniciar:boolean) => JSX.Element) => {
+export const CriarQuadrados = (VezJogador:string, setVezJogador: React.Dispatch<React.SetStateAction<string>>, Button:boolean, Reiniciar:boolean, Quadrado: (VezJogador:string, setVezJogador: React.Dispatch<React.SetStateAction<string>>, Button:boolean, Reiniciar:boolean) => JSX.Element) => {
   const Quadrados = [];
   for(let i=0; i<9; i++){
-    Quadrados.push(Quadrado(VezJogador, Button, Reiniciar));
+    Quadrados.push(Quadrado(VezJogador, setVezJogador, Button, Reiniciar));
   }
   return Quadrados;
 }
@@ -57,10 +60,6 @@ export const ChecarVitoria = (Quadrados: JSX.Element[], VezJogador:string) => {
   } else {
     return 0;
   }
-}
-
-export const ControlarTurno = (Quadrados: JSX.Element[], VezJogador: string, setVezJogador: React.Dispatch<React.SetStateAction<string>>) => {
-  TrocarJogador(VezJogador,setVezJogador);
 }
 
 export const ReiniciarJogo = (Reiniciar:boolean, setReiniciar:React.Dispatch<React.SetStateAction<boolean>>) => {
