@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,6 +40,9 @@ ol, ul {
 .tabuleiro {
   display: table;
   position: absolute;
+  height: max-content;
+  width: max-content;
+  font-size: 18px;
   vertical-align: middle;
   margin: auto;
 }
@@ -48,16 +52,16 @@ ol, ul {
   color: rgb(245, 240, 240);
   border: 1.5px solid rgb(245, 240, 240);
   float: left;
-  font-size: 24px;
+  font-size: 35px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 50px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
   
-  width: 34px;
+  width: 50px;
 }
 
 .quadrado:focus {
